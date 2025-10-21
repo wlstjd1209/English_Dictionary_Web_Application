@@ -3,54 +3,24 @@ import requests
 
 st.title(":violet[영어 단어 사전]")
 
-# # Header 
-# st.header("이것은 header")
-
-# # Subheader 
-# st.subheader("subheader999")
-
-# # 캡션 
-# st.caption("cap")
-
-# sample_code = '''
-# def function():
-#     print("Hello world")
-# '''
-
-# st.code(sample_code, language="python")
-# # 일반 텍스트
-# st.write("_Clined_, **Bold**, *Clined*")
-
-# ''
-# '---'
-# ''
-
-# st.json( {'name':'dd','age':'18'})
-
-
-# --------------------------------------------------------------------------------------------------
-
 wordinput = st.text_input("영어 단어 입력:")
 
 if wordinput:  # "" -> False, "bla-bla~" -> True
     url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{wordinput}"
-
     response = requests.get(url)
-
-    # st.write(response.status_code)
     data1 = response.json()
-    # trial = response.json()[0]
-    # st.write(data1)
-    # st.write(trial)
-
-
 
     i=0
-
 
     upcountry = ["UK", "US"]
     lowcountry = ["uk", "us"]
 
+    #검색 기록
+    if "history" not in st.session_state:
+        st.session_state["history"] = []
+    st.session_state["history"].append(wordinput)
+    st.selectbox(검색기록, st.session_state["history"]
+    
     if response.status_code == 200:
         st.title(f"**:blue[[*{wordinput}*]]에 대한 정보**")
         
@@ -58,7 +28,6 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
             "---"
             st.write(num)
             i+=1
-            
 
             for mean in data["meanings"]:
                 
@@ -124,7 +93,6 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                     else:
                         st.caption(f"SYNONYM IS NOT FOUND")
 
-
                 with st.expander("🔽 반의어"):
                     if "antonyms" in mean:
                         
@@ -137,32 +105,6 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                                 st.markdown(f"{kkkkk}. :orange[{meanant}]")
                     else:
                         st.caption(f"ANTONYM IS NOT FOUND")
-
-                # if "antonyms" in mean:
-                #     st.subheader(f"**반의어 :**")
-                    
-                #     meanann = mean["antonyms"]
-
-                #     st.json(meanann)
-
-
-
-                        
-            # for pho in data["phonetics"]:
-            #         if "text" in pho:
-            #             textpho = pho["text"]
-                        
-            #             st.write(f"**발음 : {textpho}**  :green[*({upcountry[k]})*]")
-            #             k+=1
-            #         else:
-            #             st.write(f"*:red[Text is Not Found]*")
-
-            #         if "audio" in pho:
-            #             audiopho = pho["audio"]
-            #             audioresponse = requests.get(audiopho)
-            #             st.audio(audioresponse.content, format = "audio/mp3")
-            #         else:
-            #             st.write(f"*:red[Audio is Not Found]*")
 
             for pho in data["phonetics"]:
                 if "text" in pho:
@@ -183,28 +125,8 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                             st.audio(audioresponse.content, format = "audio/mp3")
 
 
-
-
-            # for pho in data["phonetics"]:
-            #         if "text" in pho:
-            #             textpho = pho["text"]
-                        # if "audio" in pho:
-                        #     audiopho = pho["audio"]
-                        #     audioresponse = requests.get(audiopho)
-
-                        #     if audiopho[-5] == "s":
-                        #         button = st.button(f"**🔊발음 : {textpho}**  :green[*(US)*]")
-                        #     elif audiopho[-5] == "k":
-                        #         button = st.button(f"**🔊발음 : {textpho}**  :green[*(UK)*]")
-                        #     else:
-                        #         continue
-
-
-            #                 if button:
-            #                     st.audio(audioresponse.content, format = "audio/mp3")
-
-
     else:
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
