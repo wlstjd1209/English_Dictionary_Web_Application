@@ -19,7 +19,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
     if "history" not in st.session_state:
         st.session_state["history"] = []
     st.session_state["history"].append(wordinput)
-    st.selectbox(검색기록, st.session_state["history"]
+    st.selectbox("검색기록", st.session_state["history"])
     
     if response.status_code == 200:
         st.title(f"**:blue[[*{wordinput}*]]에 대한 정보**")
