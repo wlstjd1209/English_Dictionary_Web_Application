@@ -20,7 +20,6 @@ with col1:
     wordinput = st.text_input("영어 단어 입력:", st.session_state["word"])
 
 with col2:
-    st.selectbox("검색기록", st.session_state["history"])
     if st.session_state["history"]:
         selected = st.selectbox("검색기록", st.session_state["history"])
         if selected and selected != st.session_state["word"]:
@@ -152,6 +151,7 @@ else:
     st.warning("단어를 입력해주세요.")
 
 st.rerun()
+
 
 
 
