@@ -3,10 +3,10 @@ import requests
 
 st.title(":violet[영어 단어 사전]")
 
-if "history" not in st.session_state:
-    st.session_state["history"] = []
-if "word" not in st.session_state:
-    st.session_state["word"] = ""
+# if "history" not in st.session_state:
+#     st.session_state["history"] = []
+# if "word" not in st.session_state:
+#     st.session_state["word"] = ""
     
 # col1, col2 = st.columns([3,1])
 
@@ -146,6 +146,7 @@ if "word" not in st.session_state:
 #         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 # else:
 #     st.warning("단어를 입력해주세요.")
+
 
 
 
