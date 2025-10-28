@@ -1,7 +1,14 @@
 import streamlit as st
 import requests
 
+st.columns(6)
+
+
+
+
+
 st.title(":violet[영어 단어 사전]")
+
 if "history" not in st.session_state:
     st.session_state["history"] = []
 if "word" not in st.session_state:
@@ -144,7 +151,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
 else:
     st.warning("단어를 입력해주세요.")
 
-
+st.rerun()
 
 
 
