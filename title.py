@@ -76,7 +76,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                                     meanex = "NOT FOUND"
                                 st.markdown(f"{kkk}. :orange[{meandef}]")
                                 if meanex == "NOT FOUND":
-                                    st.caption("EXAMPLE IS NOT FOUND")
+                                    st.caption("EXAMPLE IS NOT PROVIDED")
                                 else:
                                     st.caption(f"ex) {meanex}")
                                             
@@ -129,4 +129,5 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
