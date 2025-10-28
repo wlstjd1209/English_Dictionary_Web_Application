@@ -18,6 +18,9 @@ with col2:
         selected = st.selectbox("검색기록", st.session_state["history"], index = None, placeholder = "선택하세요")
         if selected and selected != st.session_state["word"]:
             st.session_state["word"] = selected
+            st.experimental_rerun()
+    else:
+        st.info("검색 기록X")
     
     
 if wordinput:  # "" -> False, "bla-bla~" -> True
@@ -143,6 +146,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
 
 
