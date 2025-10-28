@@ -14,9 +14,8 @@ with col1:
     wordinput = st.text_input("영어 단어 입력:", st.session_state["word"])
 
 with col2:
-    st.session_state["history"].append("make")
     if st.session_state["history"]:
-        selected = st.selectbox("검색기록", st.session_state["history"])
+        selected = st.selectbox("검색기록", st.session_state["history"], index = None, placeholder = "선택하세요")
         if selected and selected != st.session_state["word"]:
             st.session_state["word"] = selected
     
@@ -144,6 +143,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
 
 
