@@ -144,7 +144,6 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
 else:
     st.warning("단어를 입력해주세요.")
 
-st.rerun()
 
 
 
