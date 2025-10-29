@@ -25,7 +25,7 @@ with col2:
     
 if wordinput:  # "" -> False, "bla-bla~" -> True
     if st.session_state["word"] not in st.session_state["history"]:
-        st.session_state["history"].insert(0, st.session["word"])
+        st.session_state["history"].insert(0, wordinput)
 
     
     url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{wordinput}"
@@ -146,4 +146,5 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
