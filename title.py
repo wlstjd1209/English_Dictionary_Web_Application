@@ -74,7 +74,10 @@ with col4:
             # st.rerun()
             # addhistory()
 if st.session_state["message"]:
-    st.caption(st.session_state["message"])
+    st.markdown(
+        f"<p style='text-align:right; color: #d97706; font-weight:600;'>{st.session_state['message']}</p>",
+        unsafe_allow_html=True
+    )
 
 
 if wordinput:  # "" -> False, "bla-bla~" -> True
@@ -253,3 +256,4 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
