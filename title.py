@@ -69,8 +69,9 @@ with col4:
         if button2:
             if selected == "---선택---":
                 st.session_state["message"] = "검색할 단어를 선택하세요"
-            else:
-                wordinput = selected
+            elif selected != "---선택---":
+                st.session_state["message"] = ""
+            wordinput = selected
             # st.rerun()
             # addhistory()
 if st.session_state["message"]:
@@ -256,4 +257,3 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
-
