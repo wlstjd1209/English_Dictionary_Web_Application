@@ -66,7 +66,7 @@ with col4:
         button2 = st.button("검색", key="button2")
         if button2:
             if selected == "---선택---":
-                st.info("검색할 단어를 선택하세요")
+                st.warning("검색할 단어를 선택하세요")
             else:
                 wordinput = selected
             # st.rerun()
@@ -250,6 +250,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
 
 
