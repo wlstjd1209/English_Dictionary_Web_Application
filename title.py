@@ -1,7 +1,9 @@
 import streamlit as st
 import requests
 
-st.title(":violet[영어 단어 사전]")
+st.set_page_config(page_title="영어 단어 사전", page_icon="📚")
+
+st.title("📚 영어 단어 사전")
 # 
 if "history" not in st.session_state:
     st.session_state["history"] = []
@@ -243,3 +245,4 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
