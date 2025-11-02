@@ -9,6 +9,8 @@ if "history" not in st.session_state:
     st.session_state["history"] = []
 if "word" not in st.session_state:
     st.session_state["word"] = ""
+if "message" not in st.session_state:
+    st.session_state["message"] = ""
 
 def addhistory():
     if st.session_state["word"] in st.session_state["history"]:
@@ -55,7 +57,7 @@ with col3:
         st.caption("검색할 단어를 선택하세요")
     else:
         st.caption("검색기록없음")
-
+        
     
 
 
@@ -66,12 +68,13 @@ with col4:
         button2 = st.button("검색", key="button2")
         if button2:
             if selected == "---선택---":
-                st.warning("검색할 단어를 선택하세요")
+                st.session_state["message"] = "검색할 단어를 선택하세요"
             else:
                 wordinput = selected
             # st.rerun()
             # addhistory()
-
+if st.session_state["message"]:
+    st.caption(st.session_state["message"])
 
 
 if wordinput:  # "" -> False, "bla-bla~" -> True
@@ -250,8 +253,3 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
-
-
-
-
-
