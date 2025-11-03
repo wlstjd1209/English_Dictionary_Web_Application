@@ -3,6 +3,80 @@ import requests
 
 st.set_page_config(page_title="영어 단어 사전", page_icon="📚")
 
+# 초기 상태
+if "theme" not in st.session_state:
+    st.session_state.theme = "light"
+
+def toggle_theme():
+    st.session_state.theme = "dark" if st.session_state.theme == "light" else "light"
+
+st.button("🌙 / ☀️ 전환", on_click=toggle_theme)
+
+# Light / Dark CSS
+dark_css = """
+<style>
+/* 전체 배경 */
+.main {
+    background-color: #1e1e1e !important;
+    color: white !important;
+}
+
+/* 텍스트 */
+body, p, div, span {
+    color: white !important;
+}
+
+/* 위젯 박스 (text_input, selectbox 등) */
+.stTextInput > div > div > input,
+.stSelectbox > div > div,
+textarea {
+    background-color: #2a2a2a !important;
+    color: white !important;
+}
+
+/* 버튼 */
+button {
+    background-color: #333 !important;
+    color: white !important;
+    border: 1px solid #666 !important;
+}
+
+/* 카드, 컨테이너 */
+.css-1d391kg, .css-1vbkxwb, .css-13sdm1j {
+    background-color: #2a2a2a !important;
+}
+</style>
+"""
+
+light_css = """
+<style>
+.main {
+    background-color: white !important;
+    color: black !important;
+}
+body, p, div, span {
+    color: black !important;
+}
+button {
+    background-color: #f0f0f0 !important;
+    color: black !important;
+    border: 1px solid #ddd !important;
+}
+</style>
+"""
+
+# 적용
+if st.session_state.theme == "dark":
+    st.markdown(dark_css, unsafe_allow_html=True)
+else:
+    st.markdown(light_css, unsafe_allow_html=True)
+
+# 페이지 내용
+st.title("다크모드 테스트")
+st.write("현재 테마:", st.session_state.theme)
+st.text_input("예시 입력창")
+st.selectbox("예시 셀렉트", ["A", "B", "C"])
+
 st.title("📚 영어 단어 사전")
 # 
 if "history" not in st.session_state:
@@ -259,79 +333,8 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
 else:
     st.warning("단어를 입력해주세요.")
 
-# 초기 상태
-if "theme" not in st.session_state:
-    st.session_state.theme = "light"
 
-def toggle_theme():
-    st.session_state.theme = "dark" if st.session_state.theme == "light" else "light"
 
-st.button("🌙 / ☀️ 전환", on_click=toggle_theme)
-
-# Light / Dark CSS
-dark_css = """
-<style>
-/* 전체 배경 */
-.main {
-    background-color: #1e1e1e !important;
-    color: white !important;
-}
-
-/* 텍스트 */
-body, p, div, span {
-    color: white !important;
-}
-
-/* 위젯 박스 (text_input, selectbox 등) */
-.stTextInput > div > div > input,
-.stSelectbox > div > div,
-textarea {
-    background-color: #2a2a2a !important;
-    color: white !important;
-}
-
-/* 버튼 */
-button {
-    background-color: #333 !important;
-    color: white !important;
-    border: 1px solid #666 !important;
-}
-
-/* 카드, 컨테이너 */
-.css-1d391kg, .css-1vbkxwb, .css-13sdm1j {
-    background-color: #2a2a2a !important;
-}
-</style>
-"""
-
-light_css = """
-<style>
-.main {
-    background-color: white !important;
-    color: black !important;
-}
-body, p, div, span {
-    color: black !important;
-}
-button {
-    background-color: #f0f0f0 !important;
-    color: black !important;
-    border: 1px solid #ddd !important;
-}
-</style>
-"""
-
-# 적용
-if st.session_state.theme == "dark":
-    st.markdown(dark_css, unsafe_allow_html=True)
-else:
-    st.markdown(light_css, unsafe_allow_html=True)
-
-# 페이지 내용
-st.title("다크모드 테스트")
-st.write("현재 테마:", st.session_state.theme)
-st.text_input("예시 입력창")
-st.selectbox("예시 셀렉트", ["A", "B", "C"])
 
 
 
