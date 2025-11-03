@@ -102,7 +102,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
     lowcountry = ["uk", "us"]
 
     if response.status_code == 200:
-        st.title(f"**✔ :blue[[*{wordinput}*]] 검색결과**")
+        st.title(f"**:green[✔] :blue[[*{wordinput}*]] 검색결과**")
         
         for num, data in enumerate(data1, start = 1):
             "---"
@@ -258,6 +258,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다💦 (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
 
 
