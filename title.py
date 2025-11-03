@@ -258,62 +258,80 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다💦 (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
-import streamlit as st
 
-# 초기 상태 설정
+# 초기 상태
 if "theme" not in st.session_state:
     st.session_state.theme = "light"
 
-# 테마 토글 함수
 def toggle_theme():
     st.session_state.theme = "dark" if st.session_state.theme == "light" else "light"
 
-# 토글 버튼
-st.button("🌙 / ☀️ 테마 전환", on_click=toggle_theme)
+st.button("🌙 / ☀️ 전환", on_click=toggle_theme)
 
-# CSS 적용
+# Light / Dark CSS
 dark_css = """
 <style>
-body {
-    background-color: #1e1e1e;
-    color: white;
+/* 전체 배경 */
+.main {
+    background-color: #1e1e1e !important;
+    color: white !important;
 }
-div.stButton > button {
-    background-color: #333;
-    color: white;
+
+/* 텍스트 */
+body, p, div, span {
+    color: white !important;
+}
+
+/* 위젯 박스 (text_input, selectbox 등) */
+.stTextInput > div > div > input,
+.stSelectbox > div > div,
+textarea {
+    background-color: #2a2a2a !important;
+    color: white !important;
+}
+
+/* 버튼 */
+button {
+    background-color: #333 !important;
+    color: white !important;
+    border: 1px solid #666 !important;
+}
+
+/* 카드, 컨테이너 */
+.css-1d391kg, .css-1vbkxwb, .css-13sdm1j {
+    background-color: #2a2a2a !important;
 }
 </style>
 """
 
 light_css = """
 <style>
-body {
-    background-color: white;
-    color: black;
+.main {
+    background-color: white !important;
+    color: black !important;
 }
-div.stButton > button {
-    background-color: #f0f0f0;
-    color: black;
+body, p, div, span {
+    color: black !important;
+}
+button {
+    background-color: #f0f0f0 !important;
+    color: black !important;
+    border: 1px solid #ddd !important;
 }
 </style>
 """
 
-# 상태에 따라 스타일 삽입
+# 적용
 if st.session_state.theme == "dark":
     st.markdown(dark_css, unsafe_allow_html=True)
 else:
     st.markdown(light_css, unsafe_allow_html=True)
 
-# 내용 예시
-st.title("테마 테스트 페이지")
-st.write(f"현재 테마: **{st.session_state.theme}**")
-
-
-
-
-
-
-
+# 페이지 내용
+st.title("다크모드 테스트")
+st.write("현재 테마:", st.session_state.theme)
+st.text_input("예시 입력창")
+st.selectbox("예시 셀렉트", ["A", "B", "C"])
 
 
 
