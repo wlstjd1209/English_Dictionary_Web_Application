@@ -102,7 +102,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
     lowcountry = ["uk", "us"]
 
     if response.status_code == 200:
-        st.title(f"**:blue[[*{wordinput}*]]에 대한 정보**")
+        st.title(f"**✅ :blue[[*{wordinput}*]] 검색결과**")
         
         for num, data in enumerate(data1, start = 1):
             "---"
@@ -142,7 +142,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                     else:
                         st.subheader(f":orange[**{meanpos}**]")
                 
-                with st.expander("🔽 정의&예문"):
+                with st.expander("📖 정의&예문"):
                     kkk=0
                     if "definitions" in mean:
 
@@ -161,7 +161,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                                 else:
                                     st.caption(f"ex) {meanex}")
                                             
-                with st.expander("🔽 유의어/동의어"):
+                with st.expander("🟠 유의어"):
                     if "synonyms" in mean:
                         
                         dbdmldjemf = mean["synonyms"]
@@ -175,7 +175,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                         st.caption(f"SYNONYM IS NOT FOUND")
 
 
-                with st.expander("🔽 반의어"):
+                with st.expander("🔵 반의어"):
                     if "antonyms" in mean:
                         
                         qksdmldjemf = mean["antonyms"]
@@ -258,5 +258,3 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
-
-
