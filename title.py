@@ -106,7 +106,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         
         for num, data in enumerate(data1, start = 1):
             "---"
-            st.markdown(f"#### 📌 결과 {num}")
+            st.info(f"#### 📌 결과 {num}")
             i+=1
             
 
@@ -119,28 +119,28 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                         st.subheader(f"🍳:orange[**명사**]")
 
                     elif meanpos == "pronoun":
-                        st.subheader(f":orange[**대명사**]")
+                        st.subheader(f"🍳:orange[**대명사**]")
 
                     elif meanpos == "verb":
-                        st.subheader(f"🍳 :orange[**동사**]")
+                        st.subheader(f"🍳:orange[**동사**]")
 
                     elif meanpos == "adjective":
-                        st.subheader(f":orange[**형용사**]")
+                        st.subheader(f"🍳:orange[**형용사**]")
 
                     elif meanpos == "adverb":
-                        st.subheader(f":orange[**부사**]")   
+                        st.subheader(f"🍳:orange[**부사**]")   
 
                     elif meanpos == "preposition":
-                        st.subheader(f":orange[**전치사**]")
+                        st.subheader(f"🍳:orange[**전치사**]")
                         
                     elif meanpos == "conjunction":
-                        st.subheader(f":orange[**접속사**]")
+                        st.subheader(f"🍳:orange[**접속사**]")
 
                     elif meanpos == "interjection":
-                        st.subheader(f":orange[**감탄사**]")
+                        st.subheader(f"🍳:orange[**감탄사**]")
 
                     else:
-                        st.subheader(f":orange[**{meanpos}**]")
+                        st.subheader(f"🍳:orange[**{meanpos}**]")
                 
                 with st.expander("📖 정의&예문"):
                     kkk=0
@@ -258,6 +258,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다💦 (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
 
 
