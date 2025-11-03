@@ -258,6 +258,56 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다💦 (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+import streamlit as st
+
+# 초기 상태 설정
+if "theme" not in st.session_state:
+    st.session_state.theme = "light"
+
+# 테마 토글 함수
+def toggle_theme():
+    st.session_state.theme = "dark" if st.session_state.theme == "light" else "light"
+
+# 토글 버튼
+st.button("🌙 / ☀️ 테마 전환", on_click=toggle_theme)
+
+# CSS 적용
+dark_css = """
+<style>
+body {
+    background-color: #1e1e1e;
+    color: white;
+}
+div.stButton > button {
+    background-color: #333;
+    color: white;
+}
+</style>
+"""
+
+light_css = """
+<style>
+body {
+    background-color: white;
+    color: black;
+}
+div.stButton > button {
+    background-color: #f0f0f0;
+    color: black;
+}
+</style>
+"""
+
+# 상태에 따라 스타일 삽입
+if st.session_state.theme == "dark":
+    st.markdown(dark_css, unsafe_allow_html=True)
+else:
+    st.markdown(light_css, unsafe_allow_html=True)
+
+# 내용 예시
+st.title("테마 테스트 페이지")
+st.write(f"현재 테마: **{st.session_state.theme}**")
+
 
 
 
