@@ -46,6 +46,7 @@ with col2:
     st.write("")
     button1 = st.button("검색", key="button1")
     if button1:
+        addhistory()
         st.rerun()
 
 with col3:
@@ -257,4 +258,5 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
