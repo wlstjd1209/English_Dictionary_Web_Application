@@ -106,7 +106,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         
         for num, data in enumerate(data1, start = 1):
             "---"
-            st.info(f"#### 📌 결과 {num}")
+            st.success(f" 📌 결과 {num}")
             i+=1
             
 
@@ -258,6 +258,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다💦 (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
 
 
