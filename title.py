@@ -116,7 +116,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                     meanpos = mean["partOfSpeech"]
 
                     if meanpos == "noun":
-                        st.subheader(f"✔:orange[*명사*]")
+                        st.subheader(f":orange[*명사*]🍳")
 
                     elif meanpos == "pronoun":
                         st.subheader(f":orange[**대명사**]")
@@ -258,6 +258,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
         st.error(f"""단어 정보를 가져오는 데 실패했습니다💦 (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
 
 
 
