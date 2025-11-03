@@ -44,7 +44,7 @@ if wordinput:
 with col2:
     st.write("")
     st.write("")
-    button1 = st.button("검색", key="button1")
+    button1 = st.button("🔍", key="button1")
     if button1:
         addhistory()
         st.rerun()
@@ -66,7 +66,7 @@ with col4:
     if st.session_state["history"]:
         st.write("")
         st.write("")
-        button2 = st.button("검색", key="button2")
+        button2 = st.button("🔍", key="button2")
         if button2:
             if selected == "---선택---":
                 st.session_state["message"] = "**검색할 단어를 선택하세요**"
@@ -102,7 +102,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
     lowcountry = ["uk", "us"]
 
     if response.status_code == 200:
-        st.title(f"**✅ :blue[[*{wordinput}*]] 검색결과**")
+        st.title(f"**✔ :blue[[*{wordinput}*]] 검색결과**")
         
         for num, data in enumerate(data1, start = 1):
             "---"
@@ -161,7 +161,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                                 else:
                                     st.caption(f"ex) {meanex}")
                                             
-                with st.expander("🟠 유의어"):
+                with st.expander("📙 유의어"):
                     if "synonyms" in mean:
                         
                         dbdmldjemf = mean["synonyms"]
@@ -175,7 +175,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                         st.caption(f"SYNONYM IS NOT FOUND")
 
 
-                with st.expander("🔵 반의어"):
+                with st.expander("📘 반의어"):
                     if "antonyms" in mean:
                         
                         qksdmldjemf = mean["antonyms"]
@@ -225,9 +225,9 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
                             audioresponse = requests.get(audiopho)
 
                             if audiopho[-5] == "s":
-                                st.write(f"**🔊발음 : {textpho}**  :green[*(US)*]")
+                                st.write(f"**🔊 발음 : {textpho}**  :green[*(US)*]")
                             elif audiopho[-5] == "k":
-                                st.write(f"**🔊발음 : {textpho}**  :green[*(UK)*]")
+                                st.write(f"**🔊 발음 : {textpho}**  :green[*(UK)*]")
                             else:
                                 continue
                             st.audio(audioresponse.content, format = "audio/mp3")
@@ -255,6 +255,7 @@ if wordinput:  # "" -> False, "bla-bla~" -> True
 
 
     else:
-        st.error(f"""단어 정보를 가져오는 데 실패했습니다. (상태 코드 : **{response.status_code}**)""")
+        st.error(f"""단어 정보를 가져오는 데 실패했습니다💦 (상태 코드 : **{response.status_code}**)""")
 else:
     st.warning("단어를 입력해주세요.")
+
